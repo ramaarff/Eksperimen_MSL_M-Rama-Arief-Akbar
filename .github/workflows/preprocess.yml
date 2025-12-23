@@ -1,0 +1,24 @@
+name: automate preprocess
+ 
+on:
+  push:
+    branches: [main]
+ 
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.12.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12.7"
+
+      - name: Install dependencies
+        run: pip install pandas scikit-learn
+
+      - name: Run preprocess
+        run: |
+          python preprocessing/automate_M_Rama_Arief_Akbar.py
